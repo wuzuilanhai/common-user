@@ -52,6 +52,7 @@ public class UserController {
     public Object login(@RequestBody User user) {
         Subject subject = SecurityUtils.getSubject();
         UsernamePasswordToken token = new UsernamePasswordToken(user.getUsername(), user.getPassword());
+        token.setRememberMe(true);
         subject.login(token);
         return "login success";
     }
